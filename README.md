@@ -28,22 +28,4 @@ More projects coming soon! Stay tuned.
 🔗 [LinkedIn](https://www.linkedin.com/in/yuvrajkurne0223/)  
 🔗 [Email](mailto:yuvrajkurne2311@gmail.com)  
 
-💡 *"Code, Create, and Innovate!"*  
-"@
-
-# Get all repositories in the directory
-$repos = Get-ChildItem -Path $reposPath -Directory
-
-foreach ($repo in $repos) {
-    $readmePath = "$($repo.FullName)\README.md"
-    if (!(Test-Path $readmePath)) {
-        # Create README.md and write content
-        $readmeContent | Out-File -Encoding utf8 $readmePath
-
-        # Navigate to repo and commit changes
-        Set-Location $repo.FullName
-        git add README.md
-        git commit -m "Added README"
-        git push origin main  # Adjust if using 'master' instead of 'main'
-    }
-}
+💡 *"Code, Create, and Innovate!"* 
