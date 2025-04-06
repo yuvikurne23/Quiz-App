@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quiz-App</title>
+    <link rel="stylesheet" href="loginsignup.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap" rel="stylesheet">
+</head>
+
+<body>
+    <section class="main">
+        <div class="container">
+            <div class="hello-img"><img src="assets/signup_image.png" alt=""></div>
+            <form id="signup-form">
+                <div class="login-form">
+                    <div class="login-head">
+                        <h2>Signup</h2>
+                        <span>Signup to join</span>
+                    </div>
+                    <div class="name">
+                        <label for="full-name">Full Name<span><sup>*</sup></span></label>
+                        <input type="text" id="full-name" placeholder="Full Name" required>
+                    </div>
+                    <div class="mail">
+                        <label for="email">Email ID<span><sup>*</sup></span></label>
+                        <input type="email" id="email" placeholder="xyz12@gmail.com" required>
+                    </div>
+                    <div class="password">
+                        <label for="password">Password<span><sup>*</sup></span></label>
+                        <input type="password" id="password" placeholder="Password" required>
+                        <img src="assets/eye_icon.png" alt="" onclick="togglePassword()" id="eye-icon">
+                    </div>
+                    <div class="login-button">
+                        <button type="submit" id="signup-btn">Sign Up</button>
+                    </div>
+                    <div class="google">
+                        <a href="mailto:yuvrajkurne2311@gmail.com">
+                            <p><img src="assets/devicon_google.png" alt="">Sign up with Google</p>
+                        </a>
+                    </div>
+                    <div class="terms-condition">
+                        <p>
+                            <input type="checkbox" id="check">
+                            <label for="check">I accept <a href="#" style="text-decoration: none;">Terms &
+                                    Conditions</a></label><br>
+                        </p>
+                    </div>
+                    <div class="signup-link">
+                        <span>Have an account? <a href="login.html">Log in</a></span>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </section>
+
+    <script>
+        function checkPassword(password) {
+            const includePassword = /^(?=.*[a-z.A-Z])(?=.*\d)(?=.*[!@#$%^&]).{8,}$/;
+            return includePassword.test(password);
+        }
+
+        document.getElementById('signup-form').addEventListener('submit', function (event) {
+            event.preventDefault();
+
+            const fullName = document.getElementById('full-name').value;
+            const email = document.getElementById('email').value;
+            const password = document.getElementById('password').value;
+            const isChecked = document.getElementById('check').checked;
+
+            if (!fullName || !email || !password) {
+                alert('Please fill all the fields');
+                return;
+            }
+            if (password.length < 8) {
+                alert('Password must be at least 8 characters long');
+                return;
+            }
+            if (!checkPassword(password)) {
+                alert('Password must contain at least one letter, one number, and one special character');
+                return;
+            }
+            if (!isChecked) {
+                alert('You must accept the terms and conditions to sign up');
+                return;
+            }
+
+            const users = JSON.parse(localStorage.getItem('users')) || [];
+            users.push({ fullName, email, password });
+            localStorage.setItem('users', JSON.stringify(users));
+
+            // Clear the input fields
+            document.getElementById('full-name').value = '';
+            document.getElementById('email').value = '';
+            document.getElementById('password').value = '';
+
+            window.location.href = 'login.html';
+        });
+
+
+        function togglePassword() {
+            let passwordInput = document.getElementById("password");
+            if (passwordInput.type === "password") {
+                passwordInput.type = "text";
+            } else {
+                passwordInput.type = "password";
+            }
+        }
+    </script>
+</body>
+
+</html>

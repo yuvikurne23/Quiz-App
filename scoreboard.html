@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Quiz Score</title>
+  <link rel="stylesheet" href="scoreboard.css">
+  <link rel="stylesheet" href="welcome.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:ital,wght@0,100..900;1,100..900&display=swap"
+    rel="stylesheet">
+</head>
+
+<body>
+  <section class="main-container">
+
+    <nav>
+      <div class="navbar-img">
+        <a href="https://techpaathshala.com/">
+          <img src="assets/techpathshala_logo.png" alt="">
+        </a>
+      </div>
+      <div class="profile">
+        <h3 class="name" id="user_name"></h3>
+        <div id="profile" onclick="Logout()">
+          <but ton id="logout">Logout</but>
+          <h3 class="name" id="user_name"></h3>
+          <img src="assets/logout_image.png" alt="">
+        </div>
+      </div>
+    </nav>
+
+    <div class="main-page">
+      <h1>Wow You Rank 1st</h1>
+      <p class="text">Supporting Text</p>
+      <div class="top-score">
+        <div class="rank2">
+          <img src="assets/second.png" id="rank-2" alt="">
+          <div class="total-score">
+            <h2>Score</h2>
+            <p id="score">844</p>
+          </div>
+        </div>
+        <div class="rank1">
+          <img src="assets/first.png" id="rank-1" alt="">
+          <div class="total-score">
+            <h2>Score</h2>
+            <p id="score">1020</p>
+          </div>
+        </div>
+        <div class="rank3">
+          <img src="assets/third.png" id="rank-3" alt="">
+          <div class="total-score">
+            <h2>Score</h2>
+            <p id="score">780</p>
+          </div>
+        </div>
+      </div>
+      <div class="other-scores">
+        <div class="all-scores">
+        </div>
+      </div>
+    </div>
+
+  </section>
+
+</body>
+<script src="scoreboard.js"></script>
+
+<script>
+  function Logout() {
+    const logoutBtn = document.getElementById('logout');
+    logoutBtn.style.display = logoutBtn.style.display === "block" ? "none" : "block";
+  }
+
+
+  const getUserLogin = localStorage.getItem('loggedInUser')
+  const userData = localStorage.getItem('users')
+  const users = userData ? JSON.parse(userData) : [];
+  const checkUser = users.find(user => user.email === getUserLogin)
+  if (checkUser) {
+    // Log the name of the logged-in user
+    console.log('Logged-in user name:', checkUser.fullName);
+  } else {
+    console.log('User not found or not logged in');
+  }
+
+  const userName = document.getElementById('user_name').innerHTML = checkUser.fullName
+
+
+  // Logout functionality
+  document.getElementById('logout').addEventListener('click', function () {
+    localStorage.removeItem('userAnswer');
+    localStorage.removeItem('loggedInUser');
+    window.location.href = 'login.html';
+  });
+</script>
+
+</script>
+
+</html>

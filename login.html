@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quiz-App</title>
+    <link rel="stylesheet" href="loginsignup.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:ital,wght@0,100..900;1,100..900&display=swap"
+        rel="stylesheet">
+</head>
+
+<body>
+    <section class="main">
+        <div class="container">
+            <div class="hello-img"><img src="assets/login_image.png" alt=""></div>
+            <form id="login-form">
+                <div class="login-form">
+                    <div class="login-head">
+                        <h2>Login</h2>
+                        <span>Please enter your details below.</span>
+                    </div>
+                    <div class="mail">
+                        <label for="email">Email ID<span><sup>*</sup></span></label>
+                        <input type="text" id="email" placeholder="xyz12@gmail.com" required>
+                    </div>
+                    <div class="password">
+                        <label for="password">Password<span><sup>*</sup></span></label>
+                        <input type="password" id="password" placeholder="Password" required>
+                        <img src="assets/eye_icon.png" alt="" onclick="togglePassword()" id="eye-icon">
+                    </div>
+                    <div class="login-button">
+                        <button type="submit" id="login">Login</button>
+                    </div>
+                    <div class="google">
+                        <a href="mailto:yuvrajkurne2311@gmail.com">
+                            <p><img src="assets/devicon_google.png" alt="">Sign up with Google</p>
+                        </a>
+                    </div>
+                    <div class="signup-link">
+                        <span>Don't have an account? <a href="signup.html">Sign up?</a></span>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </section>
+
+    <script>
+        document.getElementById('login-form').addEventListener('submit', function (event) {
+            event.preventDefault();
+
+            const Email = document.getElementById('email').value.trim();
+            const Password = document.getElementById('password').value.trim();
+
+            if (!Email || !Password) {
+                alert('Please fill all the fields');
+                return;
+            }
+
+            const getObj = localStorage.getItem('users'); // Fetch stored users
+            const users = getObj ? JSON.parse(getObj) : [];
+
+            const checkUsers = users.find(user => user.email === Email && user.password === Password);
+            if (checkUsers) {
+                localStorage.setItem('loggedInUser', Email);
+                window.location.href = 'welcome.html';
+            } else if (Email === 'admin' && Password === 'admin123') {
+                localStorage.setItem('loggedInUser', Email);
+                window.location.href = '../admin/home.html';
+            } else {
+                alert("Invalid email or password!");
+            }
+
+            // Clear input fields after submission
+            document.getElementById('email').value = '';
+            document.getElementById('password').value = '';
+        });
+
+
+        function togglePassword() {
+            let passwordInput = document.getElementById("password");
+            if (passwordInput.type === "password") {
+                passwordInput.type = "text";
+            } else {
+                passwordInput.type = "password";
+            }
+        }
+    </script>
+</body>
+
+</html>

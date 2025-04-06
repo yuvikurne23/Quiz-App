@@ -1,0 +1,208 @@
+* {
+    /* font-family: "Poppins", serif; */
+    margin: 0;
+    padding: 0;
+    font-family: "Inter", serif;
+
+}
+
+.container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 15%;
+}
+
+.container .hello-img {
+    margin-top: 100px;
+
+}
+
+.container .hello-img img {
+    width: 510px;
+    height: 529px;
+}
+
+.login-form {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    margin-top: 220px;
+}
+
+.login-head h2 {
+    font-weight: 700;
+    font-size: 32px;
+    line-height: 45px;
+}
+
+.login-head span {
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 19.2px;
+    color: #8E8E93;
+
+}
+
+.mail {
+    margin-top: 5px;
+    width: 440px;
+    height: 76px;
+}
+
+.password {
+    margin-top: 5px;
+    width: 440px;
+    height: 76px;
+    position: relative;
+    width: 100%;
+}
+
+#email {
+    font-weight: 400;
+    font-size: 18px;
+    line-height: 25px;
+    display: block;
+    margin-bottom: 2px;
+}
+
+#password {
+    font-weight: 400;
+    font-size: 18px;
+    line-height: 25px;
+    display: block;
+    margin-bottom: 2px;
+}
+
+
+.password input {
+    width: 440px;
+    height: 51px;
+    justify-content: space-between;
+    border-radius: 8px;
+    border: 1px solid #8E8E93;
+    padding: 0 0 0 15px;
+
+}
+
+.mail input {
+    width: 440px;
+    height: 51px;
+    justify-content: space-between;
+    border-radius: 8px;
+    border: 1px solid #8E8E93;
+    padding: 0 0 0 15px;
+
+}
+
+input::placeholder {
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 19.2px;
+
+}
+
+.login-button button {
+    width: 460px;
+    height: 43px;
+    background-color: #F3BD00;
+    border-radius: 100px;
+    border: none;
+    margin-top: 20px;
+    cursor: pointer;
+    font-weight: 500;
+    font-size: 16px;
+    line-height: 19.2px;
+}
+
+.google {
+    margin-top: 10px;
+    margin-bottom: 20px;
+}
+
+.google p {
+    width: 460px;
+    height: 40px;
+    border-radius: 8px;
+    border: 1px solid #DEDEDE;
+    border: none;
+    box-shadow: 0px 8px 16px 0px #1C1C1E1A;
+    display: flex;
+    justify-content: center;
+    text-align: center;
+    gap: 10px;
+    padding-top: 20px;
+    font-weight: 400;
+    font-size: 18px;
+    line-height: 22px;
+    cursor: pointer;
+}
+
+.google a {
+    text-decoration: none;
+    color: #1C1C1E;
+}
+
+.google p img {
+    width: 28px;
+    height: 25px;
+
+}
+
+.signup-link {
+    text-align: center;
+    margin-top: 15px;
+}
+
+.signup-link span {
+    font-weight: 400;
+    font-size: 18px;
+    color: #8E8E93;
+
+}
+
+.signup-link span a {
+    font-weight: 700;
+    font-size: 18px;
+    padding: 10px;
+    text-decoration: none;
+}
+
+label span {
+    color: red;
+}
+
+/* signup css */
+
+#full-name {
+    font-weight: 400;
+    font-size: 18px;
+    line-height: 25px;
+    display: block;
+    margin-bottom: 2px;
+}
+
+#full-name {
+    width: 440px;
+    height: 51px;
+    justify-content: space-between;
+    border-radius: 8px;
+    border: 1px solid #8E8E93;
+    padding: 0 0 0 15px;
+
+}
+
+.terms-condition {
+    text-align: center;
+}
+
+
+/* password */
+
+#eye-icon {
+position: absolute;
+left: 90%;
+top: 55%;
+cursor:pointer;
+
+}
