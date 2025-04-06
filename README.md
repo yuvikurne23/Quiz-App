@@ -1,7 +1,5 @@
 # Quiz-App
 
-$reposPath = "C:\Users\YourUsername\Projects"  # Change this to your actual repositories folder
-$readmeContent = @"
 # 👋 Hi, I'm Yuvikurne!  
 
 🚀 *Frontend Developer | Web Enthusiast | UI/UX Explorer*  
