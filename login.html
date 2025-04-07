@@ -10,6 +10,8 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:ital,wght@0,100..900;1,100..900&display=swap"
         rel="stylesheet">
+        <link rel="icon" href="assets/fav.png" type="image/x-icon" />
+
 </head>
 
 <body>
@@ -28,7 +30,7 @@
                     </div>
                     <div class="password">
                         <label for="password">Password<span><sup>*</sup></span></label>
-                        <input type="password" id="password" placeholder="Password" required>
+                        <input type="password" id="password" placeholder="Password" required autocomplete="current-password webauthn">
                         <img src="assets/eye_icon.png" alt="" onclick="togglePassword()" id="eye-icon">
                     </div>
                     <div class="login-button">

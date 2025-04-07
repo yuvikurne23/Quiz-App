@@ -10,6 +10,8 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:ital,wght@0,100..900;1,100..900&display=swap"
         rel="stylesheet">
+    <link rel="icon" href="assets/fav.png" type="image/x-icon" />
+
 </head>
 
 <body>
@@ -28,11 +30,11 @@
                     <button id="logout">Logout</button>
                     <h3 class="name" id="user_name"></h3>
                     <img src="assets/logout_image.png" alt="">
-                    
+
                 </div>
             </div>
         </nav>
-       
+
         <div class="start-quiz">
             <div class="quiz-head">
                 <h1>Let's Start the Quiz</h1>
@@ -76,7 +78,7 @@
         const logoutBtn = document.getElementById('logout');
         logoutBtn.style.display = logoutBtn.style.display === "block" ? "none" : "block";
     }
-    
+
 
     const getUserLogin = localStorage.getItem('loggedInUser')
     const userData = localStorage.getItem('users')

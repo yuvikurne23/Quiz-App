@@ -43,7 +43,7 @@ h1 {
 }
 
 .top-score h2{
-    font-size: 26px;
+    font-size: 20px;
 }
 
 #rank-2 {
@@ -58,7 +58,7 @@ h1 {
     position: relative;
     font-size: 18px;
     top: 320px;
-    left: 650px;
+    left: 655px;
     text-align: center;
 }
 
@@ -73,7 +73,7 @@ h1 {
 .rank1 .total-score {
     position: relative;
     top: 250px;
-    left: 750px;
+    left: 735px;
     text-align: center;
 }
 
@@ -88,7 +88,7 @@ h1 {
 .rank3 .total-score {
     position: relative;
     top: 350px;
-    left: 775px;
+    left: 780px;
     text-align: center;
 }
 
