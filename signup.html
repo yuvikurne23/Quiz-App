@@ -32,8 +32,10 @@
                     </div>
                     <div class="password">
                         <label for="password">Password<span><sup>*</sup></span></label>
-                        <input type="password" id="password" placeholder="Password" required autocomplete="current-password webauthn">
-                        <img src="assets/eye_icon.png" alt="" onclick="togglePassword()" id="eye-icon">
+                        <input type="password" id="password" placeholder="Password" required>
+
+                        <img id="eye_slash" src="assets/eye_slash.png" alt="" onclick="togglePassword()" >
+
                     </div>
                     <div class="login-button">
                         <button type="submit" id="signup-btn">Sign Up</button>
@@ -103,13 +105,15 @@
 
 
         function togglePassword() {
-            let passwordInput = document.getElementById("password");
+            const passwordInput = document.getElementById("password");
+
             if (passwordInput.type === "password") {
                 passwordInput.type = "text";
             } else {
                 passwordInput.type = "password";
             }
         }
+
     </script>
 </body>
 
