@@ -5,7 +5,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Quiz Score</title>
-  <link rel="stylesheet" href="scoreboard.css">
+  <link rel="stylesheet" href="scoreBoard.css">
   <link rel="stylesheet" href="welcome.css">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -69,7 +69,7 @@
   </section>
 
 </body>
-<script src="scoreboard.js"></script>
+<script src="scoreBoard.js"></script>
 
 <script>
   function Logout() {
@@ -94,7 +94,7 @@
 
   // Logout functionality
   document.getElementById('logout').addEventListener('click', function () {
-    localStorage.removeItem('userAnswer');
+    localStorage.removeItem('userAnswers');
     localStorage.removeItem('loggedInUser');
     window.location.href = 'login.html';
   });

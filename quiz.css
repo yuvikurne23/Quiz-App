@@ -129,3 +129,10 @@ li {
     position: relative;
     top: 5px;
 }
+
+.time {
+    font-size: 18px;
+  }
+  .navbar .logout-btn {
+    cursor: pointer;
+  }
