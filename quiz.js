@@ -140,7 +140,7 @@ nextButton.addEventListener("click", () => {
     
     alert("Hurray your Quiz completed!");
     localStorage.removeItem("quizData");
-    window.location.href = "scoreboard.html";
+    window.location.href = "./scoreboard.html";
   }
 });
 
@@ -223,7 +223,7 @@ function logout() {
   localStorage.removeItem("loggedInUser");
   localStorage.removeItem(startTimeKey); // Remove timer reference on logout
 
-  window.location.href = "login.html";
+  window.location.href = "./login.html";
 }
 
 // Manual logout button
