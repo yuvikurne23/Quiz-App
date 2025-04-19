@@ -60,7 +60,7 @@
     height: 100%;
     width: 0%;
     background-color: rgb(253, 192, 79);
-    transition: width 0.3s ease-in-out;
+    transition: width 0.5s ease-in-out;
 }
 
 

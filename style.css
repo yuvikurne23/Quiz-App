@@ -206,6 +206,10 @@ top: 55%;
 cursor:pointer;
 }
 
+svg{
+    fill: grey;
+}
+
 #toggleIcon {
 position: absolute;
 left: 90%;

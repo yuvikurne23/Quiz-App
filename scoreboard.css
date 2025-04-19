@@ -58,7 +58,8 @@ h1 {
     position: relative;
     font-size: 19px;
     top: 290px;
-    left: 670px;    
+    /* left: 690px;     */
+    transform: translateX(690px);
     text-align: center;
 }
 
@@ -72,8 +73,9 @@ h1 {
 
 .rank1 .total-score {
     position: relative;
-    top: 210px;
-    left: 720px;
+    top: 230px;
+    /* left: 720px; */
+    transform: translateX(780px);
     font-size: 19px;
     text-align: center;
 }
@@ -89,7 +91,8 @@ h1 {
 .rank3 .total-score {
     position: relative;
     top: 370px;
-    left: 820px;
+    transform: translateX(840px);
+    /* left: 820px; */
     font-size: 19px;
     text-align: center;
 }
