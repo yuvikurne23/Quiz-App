@@ -91,13 +91,13 @@ li {
 }
 .option:hover{
     background-color: rgb(253, 192, 79);
-    width:fit-content;
+    width:25%;
     
 }
 
 .option.selected {
     background-color: rgb(60, 199, 42);
-    width:fit-content;
+    width: 25%;
     color: white;
 }
 

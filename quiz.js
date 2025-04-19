@@ -125,7 +125,19 @@ nextButton.addEventListener("click", () => {
       responses: attempt
     });
 
-    localStorage.setItem("attempts", JSON.stringify(attempts));
+        // Save attempt
+        localStorage.setItem("attempts", JSON.stringify(attempts));
+
+        // Update latest score in users list
+        const users = JSON.parse(localStorage.getItem("users")) || [];
+        const updatedUsers = users.map(user => {
+            if (user.email === loggedInUser) {
+                return { ...user, score: score }; // update latest score
+            }
+            return user;
+        });
+        localStorage.setItem("users", JSON.stringify(updatedUsers));
+    
     alert("Hurray your Quiz completed!");
     localStorage.removeItem("quizData");
     window.location.href = "scoreboard.html";
@@ -143,8 +155,22 @@ prevButton.addEventListener("click", () => {
 loadQuestion();
 
 
+const TOTAL_TIME = 10 * 60; // 10 minutes in seconds
+let countdownTime;
 
-let countdownTime = localStorage.getItem('countdownTime') ? parseInt(localStorage.getItem('countdownTime')) : 10 * 60; // Get saved time or default to 10 minutes
+// Check if timer start time already exists
+const startTimeKey = `startTime_${loggedInUser}`;
+const savedStartTime = localStorage.getItem(startTimeKey);
+
+if (savedStartTime) {
+  // Use the saved start time to calculate remaining time
+  const elapsed = Math.floor((Date.now() - parseInt(savedStartTime)) / 1000);
+  countdownTime = Math.max(TOTAL_TIME - elapsed, 0);
+} else {
+  // This is a new login — set a fresh start time and timer
+  localStorage.setItem(startTimeKey, Date.now().toString());
+  countdownTime = TOTAL_TIME;
+}
 
 function updateTime() {
   const minutes = String(Math.floor(countdownTime / 60)).padStart(2, '0');
@@ -154,31 +180,24 @@ function updateTime() {
   // Decrease the countdown time by 1 second
   countdownTime--;
   
-  // Save the updated countdown time in localStorage
-  localStorage.setItem('countdownTime', countdownTime);
-  
-  // If time runs out, trigger logout
-  if (countdownTime < 0) {
+  if (countdownTime <= 0) {
     logout();
   }
 }
 
-// Update time every second
 setInterval(updateTime, 1000);
 
-// Timeout timer for logout (e.g., 10 minutes)
-const timeoutDuration = 10 * 60 * 1000; // 10 minutes in milliseconds
+// Auto logout after inactivity timeout (not related to the timer, optional)
+const timeoutDuration = 10 * 60 * 1000; // 10 minutes
 let timeout;
 
-// Reset the timeout every time the user interacts
 function resetTimeout() {
   clearTimeout(timeout);
   timeout = setTimeout(logout, timeoutDuration);
 }
 
-// Function to handle logout
 function logout() {
-  // Save selected answers when the user times out
+  // Save selected answers before logout
   const attempt = questions.map((q, i) => {
     const selIndex = parseInt(userAnswers[i]) - 1;
     return {
@@ -199,23 +218,19 @@ function logout() {
 
   localStorage.setItem("attempts", JSON.stringify(attempts));
 
-  // Clear quiz data
+  // Clean up all quiz data for this user
   localStorage.removeItem("quizData");
   localStorage.removeItem("loggedInUser");
+  localStorage.removeItem(startTimeKey); // Remove timer reference on logout
 
-  // Redirect to login page
   window.location.href = "login.html";
 }
 
-// Add event listener to the logout button
-document.getElementById("logout").addEventListener("click", function () {
-  logout();
-});
+// Manual logout button
+document.getElementById("logout").addEventListener("click", logout);
 
-// Reset timeout on any user interaction (click, keypress, etc.)
+// Reset timeout on interaction
 window.addEventListener("click", resetTimeout);
 window.addEventListener("keypress", resetTimeout);
-
-// Start the timeout countdown
 resetTimeout();
 
