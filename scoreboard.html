@@ -12,7 +12,6 @@
   <link href="https://fonts.googleapis.com/css2?family=Inter:ital,wght@0,100..900;1,100..900&display=swap"
     rel="stylesheet">
     <link rel="icon" href="assets/fav.png" type="image/x-icon" />
-
 </head>
 
 <body>
@@ -20,22 +19,23 @@
 
     <nav>
       <div class="navbar-img">
-        <a href="https://techpaathshala.com/">
-          <img src="assets/techpathshala_logo.png" alt="">
-        </a>
+          <a href="https://techpaathshala.com/">
+              <img src="assets/techpathshala_logo.png" alt="">
+          </a>
       </div>
       <div class="profile">
-        <h3 class="name" id="user_name"></h3>
-        <div id="profile" onclick="Logout()">
-          <but ton id="logout">Logout</but>
           <h3 class="name" id="user_name"></h3>
-          <img src="assets/logout_image.png" alt="">
-        </div>
+          <div id="profile">
+              <!-- Initially hide the logout button -->
+              <button id="logout" style="display: none;">Logout</button>
+              <h3 class="name" id="user_name"></h3>
+              <img src="assets/logout_image.png" alt="" onclick="toggleLogoutBtn()">
+          </div>
       </div>
     </nav>
 
     <div class="main-page">
-      <h1>Wow You Rank 1st</h1>
+      <h1 id="your-rank">Wow You Rank 1st</h1>
       <p class="text">Supporting Text</p>
 
       <div class="top-score">
@@ -76,16 +76,29 @@
 <script src="scoreBoard.js"></script>
 
 <script>
-  function Logout() {
+  // Function to toggle the visibility of the logout button when the profile image is clicked
+  function toggleLogoutBtn() {
     const logoutBtn = document.getElementById('logout');
-    logoutBtn.style.display = logoutBtn.style.display === "block" ? "none" : "block";
+    // Toggle the display of the logout button
+    logoutBtn.style.display = logoutBtn.style.display === 'none' ? 'block' : 'none';
   }
 
+  // Function to handle logout
+  function Logout() {
+    // Remove user data from localStorage
+    localStorage.removeItem('userAnswers');
+    localStorage.removeItem('loggedInUser');
+    
+    // Redirect to the login page
+    window.location.href = './login.html';
+  }
 
-  const getUserLogin = localStorage.getItem('loggedInUser')
-  const userData = localStorage.getItem('users')
+  // Retrieve user data from localStorage
+  const getUserLogin = localStorage.getItem('loggedInUser');
+  const userData = localStorage.getItem('users');
   const users = userData ? JSON.parse(userData) : [];
-  const checkUser = users.find(user => user.email === getUserLogin)
+  const checkUser = users.find(user => user.email === getUserLogin);
+  
   if (checkUser) {
     // Log the name of the logged-in user
     console.log('Logged-in user name:', checkUser.fullName);
@@ -93,17 +106,13 @@
     console.log('User not found or not logged in');
   }
 
-  const userName = document.getElementById('user_name').innerHTML = checkUser.fullName
+  // Display the logged-in user's name
+  document.getElementById('user_name').innerHTML = checkUser ? checkUser.fullName : "Guest";
 
-
-  // Logout functionality
+  // Attach logout event listener to the button
   document.getElementById('logout').addEventListener('click', function () {
-    localStorage.removeItem('userAnswers');
-    localStorage.removeItem('loggedInUser');
-    window.location.href = './login.html';
+    Logout();  // Call the logout function when the button is clicked
   });
-</script>
-
 </script>
 
 </html>

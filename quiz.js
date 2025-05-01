@@ -155,47 +155,6 @@ prevButton.addEventListener("click", () => {
 loadQuestion();
 
 
-const TOTAL_TIME = 10 * 60; // 10 minutes in seconds
-let countdownTime;
-
-// Check if timer start time already exists
-const startTimeKey = `startTime_${loggedInUser}`;
-const savedStartTime = localStorage.getItem(startTimeKey);
-
-if (savedStartTime) {
-  // Use the saved start time to calculate remaining time
-  const elapsed = Math.floor((Date.now() - parseInt(savedStartTime)) / 1000);
-  countdownTime = Math.max(TOTAL_TIME - elapsed, 0);
-} else {
-  // This is a new login — set a fresh start time and timer
-  localStorage.setItem(startTimeKey, Date.now().toString());
-  countdownTime = TOTAL_TIME;
-}
-
-function updateTime() {
-  const minutes = String(Math.floor(countdownTime / 60)).padStart(2, '0');
-  const seconds = String(countdownTime % 60).padStart(2, '0');
-  document.getElementById("time").textContent = `${minutes}:${seconds}`;
-  
-  // Decrease the countdown time by 1 second
-  countdownTime--;
-  
-  if (countdownTime <= 0) {
-    logout();
-  }
-}
-
-setInterval(updateTime, 1000);
-
-// Auto logout after inactivity timeout (not related to the timer, optional)
-const timeoutDuration = 10 * 60 * 1000; // 10 minutes
-let timeout;
-
-function resetTimeout() {
-  clearTimeout(timeout);
-  timeout = setTimeout(logout, timeoutDuration);
-}
-
 function logout() {
   // Save selected answers before logout
   const attempt = questions.map((q, i) => {
@@ -229,8 +188,8 @@ function logout() {
 // Manual logout button
 document.getElementById("logout").addEventListener("click", logout);
 
-// Reset timeout on interaction
-window.addEventListener("click", resetTimeout);
-window.addEventListener("keypress", resetTimeout);
-resetTimeout();
+// // Reset timeout on interaction
+// window.addEventListener("click", resetTimeout);
+// window.addEventListener("keypress", resetTimeout);
+// resetTimeout();
 

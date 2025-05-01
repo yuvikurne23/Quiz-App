@@ -1,29 +1,26 @@
-# Quiz-App
+# Quiz App User-side
 
-# 👋 Hi, I'm Yuvikurne!  
+Welcome to my **Quiz App User-side** project! This is a dynamic and interactive quiz application built using **HTML**, **CSS**, and **JavaScript**. It features an Admin Dashboard for managing quiz questions and answers, with the ability to store quiz data in **localStorage**.
 
-🚀 *Frontend Developer | Web Enthusiast | UI/UX Explorer*  
+## Key Features:
+- **Interactive Quiz Interface**: Users can answer multiple-choice questions and track their progress.
+- **localStorage Integration**: User answers and quiz data are saved in the browser’s local storage, ensuring a seamless experience even after page reloads.
+- **Responsive Design**: The app is designed to work across all devices, ensuring a smooth user experience on mobile, tablet, and desktop screens.
 
-Welcome to my GitHub! I’m passionate about building interactive and user-friendly web applications. I specialize in crafting sleek, responsive, and high-performing websites.  
+## Tech Stack:
+- **HTML**: Markup structure
+- **CSS**: Styling and layout
+- **JavaScript**: Dynamic interactions and local storage management
 
-## 🌟 About Me  
-- 🎨 Passionate about *Frontend Development & UI/UX*  
-- 💼 Building responsive and dynamic web applications  
-- 🔥 Skilled in *HTML, CSS, JavaScript, React, Tailwind CSS*  
-- 📚 Always learning new technologies and best practices  
+## Live Demo:
+Check out the live version of the quiz app here:  
+[Quiz App Demo](https://quiz-hqu2vhzjd-yuvraj-kurnes-projects.vercel.app/)
 
-## 🛠 Tech Stack  
-🔹 *Languages:* HTML, CSS, JavaScript  
-🔹 *Frameworks/Libraries:* React.js, Tailwind CSS, Bootstrap  
-🔹 *Tools:* Git, GitHub, VS Code, Figma  
+## Installation:
+To run the app locally, follow these steps:
+1. Clone the repository:  
+   `git clone https://github.com/yuvikurne/quiz-app.git`
+2. Open the project folder and open `index.html` in your browser.
 
-## 📌 Projects  
-🚀 Check out my *GitHub*  
-More projects coming soon! Stay tuned.  
-
-## 👯 Let's Connect!  
-🔗 [GitHub](https://github.com/yuvikurne)  
-🔗 [LinkedIn](https://www.linkedin.com/in/yuvrajkurne0223/)  
-🔗 [Email](mailto:yuvrajkurne2311@gmail.com)  
-
-💡 *"Code, Create, and Innovate!"* 
+## License:
+This project is open-source and available under the [MIT License](LICENSE).

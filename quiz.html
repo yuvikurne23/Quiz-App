@@ -26,12 +26,11 @@
             <div class="profile">
                 <span>Edit Quiz</span>
                 <span>All Quizzes</span>
-                <div class="time" id="time">00:00</div>
                 <h3 class="name" id="user_name"></h3>
-                <div id="profile" onclick="Logout()">
+                <div id="profile" >
                     <button id="logout">Logout</button>
                     <h3 class="name" id="user_name"></h3>
-                    <img src="assets/logout_image.png" alt="">
+                    <img src="assets/logout_image.png" alt="" onclick="Logout()">
                 </div>
             </div>
         </nav>
@@ -78,7 +77,8 @@
         console.log('User not found or not logged in');
     }
 
-    const userName = document.getElementById('user_name').innerHTML = checkUser.fullName
+    const userName = document.getElementById('user_name').innerHTML = checkUser.fullName.toUpperCase();
+
 
 
     // Logout functionality
