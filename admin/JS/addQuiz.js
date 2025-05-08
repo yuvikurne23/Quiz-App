@@ -1,30 +1,34 @@
 function handleNavigation(page) {
   switch (page) {
-    case "home":
-      window.location.href = `./home.html`;
-      break;
-    case "quizz":
-      window.location.href = `./addQuiz.html`;
-      break;
-    case "users":
-      window.location.href = `./users.html`;
-      break;
-    default:
-      window.location.href = `./home.html`;
-      break;
+      case "home":
+             window.location.href=`/admin/home.html`
+          break;
+      case "quizz":
+             window.location.href=`/admin/addQuiz.html`
+          break;
+      case "users":
+            window.location.href=`/admin/users.html`
+          break;
+  
+      default:
+        window.location.href = "/admin/home.html";
+          break;
   }
 }
 
+
 const menuButton = document.querySelector('.menu');
 const sidebar = document.querySelector('.sidebar');
+const sidebarItems = document.querySelectorAll('.sidebar ul li');
+
+menuButton.addEventListener('click', () => {
+  // Toggle the sidebar visibility
+  sidebar.classList.toggle('hidden');
+});
 
 document.getElementById('logout').addEventListener('click', () => {
   localStorage.removeItem('loggedInUser');
   window.location.href = '../quizlogin.html';
-});
-
-menuButton.addEventListener('click', () => {
-  sidebar.classList.toggle('hidden');
 });
 
 function adminProfile() {
@@ -106,9 +110,9 @@ function renderQuestions() {
       <td>${i + 1}</td>
       <td>${q.question}</td>
       <td class="action">
-        <span onclick="viewQuestion(${i})"><i class='fa fa-eye'></i></span>
-        <span onclick="openForm(${i})"><i class='fa fa-pen'></i></span>
-        <span onclick="deleteQuestion(${i})"><i class='fa fa-trash'></i></span>
+        <span onclick="viewQuestion(${i})">     <i class='fa fa-eye'></i> </span>
+        <span onclick="openForm(${i})">         <i class='fa fa-pen'></i> </span>
+        <span onclick="deleteQuestion(${i})">   <i class='fa fa-trash'></i> </span>
       </td>
     `;
     tbody.appendChild(tr);

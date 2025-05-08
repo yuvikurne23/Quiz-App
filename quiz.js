@@ -101,7 +101,7 @@ nextButton.addEventListener("click", () => {
 
     attempts[loggedInUser].push({
       timestamp: new Date().toISOString(),
-      score: score,
+      score: score * 1000,
       responses: attempt
     });
 
@@ -110,7 +110,7 @@ nextButton.addEventListener("click", () => {
     // Update score in user list
     const users = JSON.parse(localStorage.getItem("users")) || [];
     const updatedUsers = users.map(user =>
-      user.email === loggedInUser ? { ...user, score: score } : user
+      user.email === loggedInUser ? { ...user, score: score * 1000 } : user
     );
     localStorage.setItem("users", JSON.stringify(updatedUsers));
 

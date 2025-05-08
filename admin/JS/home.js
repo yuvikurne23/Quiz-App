@@ -1,20 +1,21 @@
 function handleNavigation(page) {
     switch (page) {
         case "home":
-            window.location.href = `/admin/home.html`
+               window.location.href=`/admin/home.html`
             break;
         case "quizz":
-            window.location.href = `/admin/addQuiz.html`
+               window.location.href=`/admin/addQuiz.html`
             break;
         case "users":
-            window.location.href = `/admin/users.html`
+              window.location.href=`/admin/users.html`
             break;
-
+    
         default:
-            window.location.href = `./home.html`
+            window.location.href = "/admin/home.html";
             break;
     }
 }
+
 
 const menuButton = document.querySelector('.menu');
 const sidebar = document.querySelector('.sidebar');

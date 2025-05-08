@@ -1,0 +1,109 @@
+
+/* CSS for users.html */
+
+
+/* Styles for the main content area */
+.main-content {
+    width: 100%;
+    padding: 10px;
+    box-sizing: border-box;
+}
+
+
+/* Table styles */
+.main-content table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 20px 0;
+    font-size: 16px;
+    text-align: left;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    /* border-radius: 8px; */
+    overflow: hidden;
+    text-align: center;
+    background-color: #f1e1a6;
+}
+
+
+.main-content th{
+    border: 1px solid #0f0f0f;
+    padding: 15px 5px;    
+}
+.main-content td {
+    border: 1px solid #0f0f0f;
+    padding: 8px;
+}
+
+.action span{
+    align-items:center;
+    padding-left: 15px;
+    cursor: pointer;
+}
+
+
+.main-content th {
+    background-color: #f4f4f4;
+    color: #333;
+    font-weight: bold;
+    text-transform: uppercase;
+}
+
+
+/* Action buttons style */
+.main-content tbody td button {
+    padding: 8px 12px;
+    margin: 5px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 14px;
+    transition: background-color 0.3s ease;
+}
+
+
+.main-content tbody td button:first-child {
+    /* background-color: #5cb85c; */
+    /* View button color */
+    color: white;
+}
+
+
+.main-content tbody td button:nth-child(2) {
+    /* background-color: #f0ad4e; */
+    /* Edit button color */
+    color: white;
+}
+
+
+.main-content tbody td button:last-child {
+    /* background-color: #d9534f; */
+    /* Delete button color */
+    color: white;
+}
+
+
+.main-content tbody td button:hover {
+    opacity: 0.8;
+}
+
+
+.heading {
+    font-size: 20px;
+    font-weight: 600;
+}
+
+
+button i.fa {
+    font-size: 16px;
+    padding: 6px;
+    color: white;
+    background-color: #007bff;
+    border-radius: 4px;
+    margin-right: 5px;
+    cursor: pointer;
+  }
+  
+  button i.fa:hover {
+    opacity: 0.8;
+  }
+  
