@@ -1,0 +1,166 @@
+/* home.html */
+body, html {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Arial, sans-serif;
+}
+
+nav {
+    height: 60px;
+    background-color: white;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 80px;
+}
+.head-img{
+    display: flex;
+    gap: 0px;
+}
+
+.menu{
+    display: flex;
+    gap: 50px;
+}
+.menu i{
+    font-size: 25px;
+    cursor: pointer;
+}
+.profile{
+    display: flex;
+    gap: 20px;
+    align-items:center;
+    font-weight: 600;
+
+    
+}
+
+.navbar .profile {
+    font-size: 20px;
+    font-weight: 400;
+    display: flex;
+    align-items: center;
+    gap: 30px;
+}
+.profile .profile-img img{
+    width: 50px;
+    height: 50px;
+    background-color: black;
+    border-radius: 50%;
+    cursor: pointer;
+}
+.admin-profile{
+    width: 250px;
+    height: 200px;
+    padding: 20px 0;
+    font-size: 18px;
+    background-color: white;
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+    position: absolute;
+    top: 80px;
+    right: 10px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    display: none;
+    text-align: center;
+    border-radius:20px;
+}
+.admin-profile .profile-img img{
+    width: 55px;
+    height: 55px;
+    background-color: black;
+    border-radius: 50%;
+    margin: auto;
+    cursor: pointer;
+    
+}
+.logout{
+    font-size: 18px;
+    border: none;
+    border-radius: 10px;
+    padding: 10px 25px;
+    background-color: red;
+    cursor: pointer;
+    font-weight: 600;
+}
+
+.dashboard {
+    display: flex;
+    height: calc(100vh - 60px);
+    gap: 10px;
+}
+
+.sidebar {
+    width: 250px;
+    background-color: #f4f4f4;
+    padding: 20px 0;
+    box-shadow: 2px 0 5px rgba(0, 0, 0, 0.1);
+}
+
+.sidebar ul {
+    color: gray;
+    list-style: none;
+    padding: 10px 20px;
+    margin: 0;
+}
+
+/* Sidebar styles */
+.sidebar ul li {
+    padding: 10px;
+    cursor: pointer;
+    list-style: none;
+    font-size: 18px;
+    font-weight: 600;
+}
+
+.sidebar ul li a {
+    text-decoration: none;
+    color: inherit;
+}
+.active {
+     color:#f3c10e;
+}
+
+
+.sidebar ul li:hover {
+    background-color: rgb(209, 208, 208);
+}
+.sidebar span{
+    color: gray;
+    font-size: 30px;
+    padding: 15px 30px;
+}
+/* Sidebar Hidden State */
+.sidebar.hidden {
+    display: none;
+}
+
+.sidebar {
+    transition: all 0.3s ease;
+}
+
+.main-content {
+    flex: 1;
+    padding: 20px;
+    background: #f1e1a6;
+    overflow-y: auto;
+}
+#center{
+    font-size: 50px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    top: 380px;
+}
+.content {
+    display: none;
+}
+
+.content.active {
+    display: block;
+}
+
+/* home.html */

@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin-panel</title>
+    <link rel="stylesheet" href="./CSS/home.css">
+    <link rel="stylesheet" href="./CSS/addQuiz.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css"
+        integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+</head>
+
+<body>
+    <section class="home-main">
+        <nav>
+            
+            <div class="menu">
+                <i class="fa-solid fa-bars"></i>
+                <div class="head-img">
+                    <img src="./assets/techpathshala_logo.png" alt="">
+                </div>
+            </div>
+
+
+            <div class="admin-profile" id="admin-popup">
+                <div class="profile-img">
+                    <img src="./assets/admin.webp" alt="">
+                </div>
+                <p>Admin</p>
+                <p>admin@gmail.com</p>
+                <button class="logout" id="logout">Logout</button>
+            </div>
+
+            <div class="profile">
+                <p>Admin</p>
+                <div class="profile-img" id="admin-profile" onclick="adminProfile()">
+                    <img src="./assets/admin.webp" alt="">
+                </div>
+            </div>
+        </nav>
+
+            <section class="dashboard">
+                
+                <div class="sidebar">
+                    <span>Menu</span>
+                    <ul>
+                      <li onclick="handleNavigation('home')" id="home" class="active"><i class="fa-solid fa-user"></i> Home</li> 
+                      <li onclick="handleNavigation('users')" id="users"><i class="fa-solid fa-house"></i> Users</li>
+                      <li onclick="handleNavigation('quizz')" id="quizz"><i class="fa-regular fa-circle-question"></i> Quizzes</li>
+                    </ul>
+                  </div>
+                <div class="main-content">
+                    <p class="heading">MCQ Question Lists</p>
+                    <hr>
+                    <button class="add-question" id="add-question">Add new Question</button>
+                    <table>
+                        <thead>
+                            <tr>
+                                <th class="no">Sr No</th>
+                                <th class="questions-col">Questions</th>
+                                <th class="actions">Actions</th>
+                            </tr>
+                        </thead>
+                        <tbody class="tbody"></tbody>
+                    </table>
+                </div>
+        
+            </div>
+            <!-- Popup Modal -->
+            <div id="questionModal" class="modal">
+                <div class="modal-content">
+                    <span class="close">&times;</span>
+                    <div class="model-head">
+                        <h2 id="type"></h2>
+                    </div>
+                    <div class="question-details">
+        
+                    </div>
+                </div>
+            </div>
+        
+            <div class="delete-model" id="delete-modal">
+                <div class="question-delete">
+                    <p>Are you sure you want to remove this question from record</p>
+                    <div class="buttons">
+                        <button id="delete">Delete</button>
+                        <button id="cancel">Cancel</button>
+                    </div>
+                </div>
+            </div>
+            </section>
+        
+    </section>
+    <script src="./JS/addQuiz.js"></script>
+</body>
+
+</html>

@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin-panel</title>
+    <link rel="stylesheet" href="./CSS/home.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css"
+        integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+</head>
+<style>
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px 0;
+            font-size: 18px;
+            text-align: left;
+        }
+
+        th,
+        td {
+            border: 1px solid #ddd;
+            padding: 8px;
+        }
+
+        th {
+            background-color: #f4f4f4;
+        }
+
+        tr:nth-child(even) {
+            background-color: #f9f9f9;
+        }
+
+        tr:hover {
+            background-color: #f1f1f1;
+        }
+    </style>
+
+<body>
+    <section class="home-main">
+        <nav>
+            
+            <div class="menu">
+                <i class="fa-solid fa-bars"></i>
+                <div class="head-img">
+                    <img src="./assets/techpathshala_logo.png" alt="">
+                </div>
+            </div>
+
+
+            <div class="admin-profile" id="admin-popup">
+                <div class="profile-img">
+                    <img src="./assets/admin.webp" alt="">
+                </div>
+                <p>Admin</p>
+                <p>admin@gmail.com</p>
+                <button class="logout" id="logout">Logout</button>
+            </div>
+
+            <div class="profile">
+                <p>Admin</p>
+                <div class="profile-img" id="admin-profile" onclick="adminProfile()">
+                    <img src="./assets/admin.webp" alt="">
+                </div>
+            </div>
+        </nav>
+
+            <section class="dashboard">
+                <div class="sidebar">
+                    <span>Menu</span>
+                    <ul>
+                        <li onclick="handleNavigation('home')" id="home" class="active"><i class="fa-solid fa-user"></i> Home</li> 
+                        <li onclick="handleNavigation('users')" id="users"><i class="fa-solid fa-house"></i> Users</li>
+                        <li onclick="handleNavigation('quizz')" id="quizz" ><i class="fa-regular fa-circle-question"></i> Quizzes</li>
+                    </ul>
+                </div>
+                <div class="main-content">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Sr.No</th>
+                                <th>Name</th>
+                                <th>Email Id</th>
+                                <th>No.of Test Given</th>
+                                <th>Score</th>
+                                <th>Action</th>
+                            </tr>
+                        </thead>
+                        <tbody class="tbody"></tbody>
+                    </table>
+                </div>        
+            </section>
+        
+    </section>
+    <script src="./JS/users.js"></script>
+</body>
+
+</html>
