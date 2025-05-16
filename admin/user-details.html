@@ -47,31 +47,34 @@
                     <span>MENU</span>
                     <ul>
                         <li onclick="handleNavigation('home')" id="home"><i class="fa-solid fa-user"></i> Home</li> 
-                        <li onclick="handleNavigation('users')" id="users" class="active"><i class="fa-solid fa-house"></i> Users</li>
+                        <li onclick="handleNavigation('users')" id="users"><i class="fa-solid fa-house"></i> Users</li>
                         <li onclick="handleNavigation('quiz')" id="quizz" ><i class="fa-regular fa-circle-question"></i> Quizzes</li>
                     </ul>
                 </div>
                 <div class="main-content">
-                    <p class="heading">User Details</p>
+                    <div class="user-detail">
+                        <span class="user-name"></span>                            
+                        <span class="vl"> </span>
+                        <span class="user-email"></span>
+                    </div>
                     <hr style=" height: 2px; background-color:black;">
                     <table>
                         <thead>
                             <tr>
-                                <th>Sr.No</th>
-                                <th>Name</th>
-                                <th>Email Id</th>
-                                <th>No.of Test Given</th>
-                                <th>Score</th>
-                                <th>Action</th>
+                                <th>Test No.</th>
+                                <th>Test Date</th>
+                                <th>Scores</th>
+                                <th>Correct Answer</th>
+                                <th>View Test</th>
                             </tr>
                         </thead>
                         <tbody class="tbody"></tbody>
                     </table>
-                </div>        
+                </div>                
             </section>
         
     </section>
-    <script src="./JS/users.js"></script>
+    <script src="./JS/user-details.js"></script>
 </body>
 
 </html>

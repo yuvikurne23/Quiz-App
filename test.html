@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Admin Dashboard - Users</title>
+  <link rel="stylesheet" href="./css/dashboard.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css"
+    integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg=="
+    crossorigin="anonymous" referrerpolicy="no-referrer" />
+  <style>
+    .user-name {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      font-size: 22px;
+    }
+
+    .user-name span {
+      width: 2.5px;
+      height: 25px;
+      background-color: black;
+    }
+
+    .hr {
+      position: relative;
+      bottom: 10px;
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 20px 0;
+      font-size: 18px;
+      text-align: left;
+    }
+
+    th,
+    td {
+      border: 1px solid #ddd;
+      padding: 8px;
+    }
+
+    th {
+      background-color: #f4f4f4;
+    }
+
+    tr:nth-child(even) {
+      background-color: #f9f9f9;
+    }
+
+    tr:hover {
+      background-color: #f1f1f1;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="navbar">
+    <div class="logo">
+      <img src="../image/techoaathshala_logo (1).png" alt="" />
+      <div class="menu">
+        <i class="fa-solid fa-bars"></i>
+      </div>
+    </div>
+    <div class="admin-profile" id="admin-popup">
+      <div class="profile-img"></div>
+      <p>Admin</p>
+      <p>admin@gmail.com</p>
+      <button class="logout" id="logout">Logout</button>
+    </div>
+    <div class="profile">
+      <p>Admin</p>
+      <div class="profile-img" id="admin-profile" onclick="adminProfile()"></div>
+    </div>
+  </div>
+
+  <div class="dashboard">
+    <div class="sidebar">
+      <span>MENU</span>
+      <ul>
+        <li onclick="handleNavigation('home')" id="home">
+          <i class="fa-solid fa-user"></i> Home
+        </li>
+        <li onclick="handleNavigation('users')" id="users" class="active">
+          <i class="fa-solid fa-house"></i> Users
+        </li>
+        <li onclick="handleNavigation('quiz')" id="quizz">
+          <i class="fa-regular fa-circle-question"></i> Quizzes
+        </li>
+      </ul>
+    </div>
+
+    <div class="main-content">
+      <div class="user-name"></div>
+      <hr class="hr" />
+      <table>
+        <thead>
+          <tr>
+            <th>Test No</th>
+            <th>Full Name</th>
+            <th>Email</th>
+            <th>No. of Tests</th>
+            <th>Score</th>
+            <th>View Test</th>
+          </tr>
+        </thead>
+        <tbody class="tbody"></tbody>
+      </table>
+    </div>
+  </div>
+
+  <script>
+    function handleNavigation(page) {
+      switch (page) {
+        case "home":
+          window.location.href = "/admin/home.html";
+          break;
+        case "quiz":
+          window.location.href = "/admin/addQuiz.html";
+          break;
+        case "users":
+          window.location.href = "/admin/users.html";
+          break;
+        default:
+          window.location.href = "/admin/home.html";
+          break;
+      }
+    }
+
+    const menuButton = document.querySelector(".menu");
+    const sidebar = document.querySelector(".sidebar");
+
+    menuButton.addEventListener("click", () => {
+      sidebar.classList.toggle("hidden");
+    });
+
+    function adminProfile() {
+      const profile = document.getElementById("admin-popup");
+      if (profile.style.display === "none" || profile.style.display === "") {
+        profile.style.display = "block";
+      } else {
+        profile.style.display = "none";
+      }
+    }
+
+    async function displayUsers() {
+      let users = JSON.parse(localStorage.getItem("users")) || [];
+      const attempts = JSON.parse(localStorage.getItem("attempts")) || {};
+      const tableBody = document.querySelector(".main-content .tbody");
+      tableBody.innerHTML = "";
+
+      if (users.length === 0) {
+        tableBody.innerHTML = '<tr><td colspan="6">No users found.</td></tr>';
+        return;
+      }
+
+      users = users.map((user) => {
+        const userAttempts = attempts[user.email] || [];
+        userAttempts.sort((a, b) => new Date(b.timestamp) - new Date(a.timestamp));
+        const latest = userAttempts[0];
+
+        return {
+          ...user,
+          noOfTestGiven: userAttempts.length,
+          score: latest ? latest.score : "N/A",
+          lastAttempt: latest ? new Date(latest.timestamp).toLocaleDateString() : "N/A",
+        };
+      });
+
+      users.forEach((user, index) => {
+        const row = document.createElement("tr");
+        row.innerHTML = `
+          <td>${index + 1}</td>
+          <td>${user.fullName}</td>
+          <td>${user.email}</td>
+          <td>${user.noOfTestGiven}</td>
+          <td>${user.score}</td>
+          <td><a href="../user-details.html?id=${index}" class="view-result">View Result</a></td>
+        `;
+        tableBody.appendChild(row);
+      });
+    }
+
+    // Invoke after DOM content is ready
+    document.addEventListener("DOMContentLoaded", displayUsers);
+  </script>
+</body>
+
+</html>

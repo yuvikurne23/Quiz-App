@@ -7,6 +7,7 @@
     <title>Admin-panel</title>
     <link rel="stylesheet" href="./CSS/home.css">
     <link rel="stylesheet" href="./CSS/users.css">
+    <link rel="stylesheet" href="./CSS/result.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css"
     integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg=="
     crossorigin="anonymous" referrerpolicy="no-referrer" />
@@ -47,31 +48,32 @@
                     <span>MENU</span>
                     <ul>
                         <li onclick="handleNavigation('home')" id="home"><i class="fa-solid fa-user"></i> Home</li> 
-                        <li onclick="handleNavigation('users')" id="users" class="active"><i class="fa-solid fa-house"></i> Users</li>
+                        <li onclick="handleNavigation('users')" id="users"><i class="fa-solid fa-house"></i> Users</li>
                         <li onclick="handleNavigation('quiz')" id="quizz" ><i class="fa-regular fa-circle-question"></i> Quizzes</li>
                     </ul>
                 </div>
                 <div class="main-content">
-                    <p class="heading">User Details</p>
+                    <div class="user-detail">
+                        <span class="user-name"></span>                            
+                        <span class="vl"> </span>
+                        <span class="user-email"></span>
+                    </div>
                     <hr style=" height: 2px; background-color:black;">
-                    <table>
-                        <thead>
-                            <tr>
-                                <th>Sr.No</th>
-                                <th>Name</th>
-                                <th>Email Id</th>
-                                <th>No.of Test Given</th>
-                                <th>Score</th>
-                                <th>Action</th>
-                            </tr>
-                        </thead>
-                        <tbody class="tbody"></tbody>
-                    </table>
-                </div>        
+                    <div class="result">
+                        <div class="header">
+                            <p id="test-number">Test:</p>
+                            <p id="score">Score: </p>
+                            <p id="test-date">Date: </p>
+                            <p id="time-taken">Time Taken: </p>
+                        </div>
+        
+                        <div id="result-container"></div>
+                    </div>
+                </div>                
             </section>
         
     </section>
-    <script src="./JS/users.js"></script>
+    <script src="./JS/result.js"></script>
 </body>
 
 </html>

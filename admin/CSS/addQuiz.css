@@ -64,6 +64,13 @@ th.actions {
     font-weight: 800;
 }
 
+.add-question:hover {
+    background-color: rgb(4, 180, 4); /* Darker green on hover */
+    cursor: pointer;
+    transform: scale(1.03); /* Slight zoom effect */
+    transition: all 0.2s ease;
+}
+
 .view,
 .edit,
 .delete {

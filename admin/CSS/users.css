@@ -34,11 +34,6 @@
     padding: 8px;
 }
 
-.action span{
-    align-items:center;
-    padding-left: 15px;
-    cursor: pointer;
-}
 
 
 .main-content th {
@@ -92,18 +87,17 @@
     font-weight: 600;
 }
 
+/* user-details.css */
 
-button i.fa {
-    font-size: 16px;
-    padding: 6px;
-    color: white;
-    background-color: #007bff;
-    border-radius: 4px;
-    margin-right: 5px;
-    cursor: pointer;
+.user-detail{
+    display: flex;
+    gap: 10px;
+    height: 40px;
+    align-items:center;
+}
+
+.vl {
+    border-left: 3px solid green;
+    height: 40px;
   }
-  
-  button i.fa:hover {
-    opacity: 0.8;
-  }
-  
+/* user-details.css */
