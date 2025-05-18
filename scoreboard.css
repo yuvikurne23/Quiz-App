@@ -39,34 +39,31 @@ h1 {
     font-weight: 400;
 }
 
-.top-score {
-    display: flex;
-    gap: 20px;
-}
 
 .top-score h2 {
-    font-size: 20px;
+    font-size: 18px;
 }
 
+
 #rank-2 {
-    width: 210px;
-    height: 492px;
+    width: 200px;
+    height: 450px;
     position: absolute;
     top: 150px;
-    left: 620px;
+    left: 635px;
 }
 
 .rank2 .total-score {
     position: fixed;
     font-size: 19px;
-    top: 430px;
-    left: 640px;
+    top: 380px;
+    left: 670px;
     text-align: center;
 }
 
 #rank-1 {
-    width: 210px;
-    height: 552px;
+    width: 200px;
+    height: 480px;
     position: absolute;
     top: 65px;
     left: 850px;
@@ -74,24 +71,24 @@ h1 {
 
 .rank1 .total-score {
     position: fixed;
-    top: 360px;
-    left: 895px;
+    top: 320px;
+    left: 890px;
     font-size: 19px;
     text-align: center;
 }
 
 #rank-3 {
-    width: 210px;
-    height: 419px;
+    width: 200px;
+    height: 450px;
     position: absolute;
     top: 250px;
-    left: 1078px;
+    left: 1065px;
 }
 
 .rank3 .total-score {
     position: fixed;
-    top: 485px;
-    left: 1115px;
+    top: 465px;
+    left: 1090px;
     font-size: 19px;
     text-align: center;
 }

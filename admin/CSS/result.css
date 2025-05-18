@@ -3,7 +3,7 @@
     background: white;
     padding: 20px;
     border-radius: 10px;
-    /* box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); */
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
 }
 
 .header {
@@ -60,34 +60,51 @@
 }
 
 
-.question-block {
-    margin: 20px 0;
+
+.question {
+    margin-bottom: 25px;
     padding: 15px;
     border: 1px solid #ccc;
-    border-radius: 10px;
-    background-color: #f9f9f9;
+    border-radius: 6px;
+    background-color: #fafafa;
+  }
+  
+  .question p {
+    font-weight: 600;
+    margin-bottom: 12px;
   }
   
   .option {
     padding: 8px 12px;
-    margin: 5px 0;
-    border-radius: 5px;
+    margin-bottom: 6px;
+    border-radius: 4px;
+    background-color: #f0f0f0;
+    cursor: default;
+    user-select: none;
+    transition: background-color 0.3s ease;
   }
   
+  /* Correct option (selected and correct) */
   .option.correct {
     background-color: #d4edda;
     color: #155724;
-    font-weight: bold;
+    border: 1px solid #c3e6cb;
+    font-weight: 700;
   }
   
-  .option.selected {
+  /* Selected option but incorrect */
+  .option.incorrect {
     background-color: #f8d7da;
     color: #721c24;
+    border: 1px solid #f5c6cb;
+    font-weight: 700;
   }
   
-  .option.correct-selected {
-    background-color: #c3e6cb;
-    color: #155724;
-    font-weight: bold;
+  /* Correct answer but not selected */
+  .option.correct-answer {
+    background-color: #d1ecf1;
+    color: #0c5460;
+    border: 1px solid #bee5eb;
+    font-style: italic;
   }
   

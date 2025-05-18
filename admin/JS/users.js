@@ -1,4 +1,21 @@
-displayUsers();
+const menuButton = document.querySelector(".menu");
+const sidebar = document.querySelector(".sidebar");
+const sidebarItems = document.querySelectorAll(".sidebar ul li");
+
+menuButton.addEventListener("click", () => {
+  sidebar.classList.toggle("hidden");
+});
+
+function adminProfile() {
+  const profile = document.getElementById("admin-popup");
+  profile.style.display = (profile.style.display === "none" || profile.style.display === "") ? "block" : "none";
+}
+
+document.getElementById("logout").addEventListener("click", () => {
+  localStorage.removeItem("loggedInUser");
+  window.location.href = "../login.html";
+});
+
 function handleNavigation(page) {
   switch (page) {
     case "home":
@@ -16,32 +33,52 @@ function handleNavigation(page) {
   }
 }
 
-const menuButton = document.querySelector(".menu");
-const sidebar = document.querySelector(".sidebar");
-const sidebarItems = document.querySelectorAll(".sidebar ul li");
+document.addEventListener("DOMContentLoaded", function () {
+  const urlParams = new URLSearchParams(window.location.search);
+  const userId = urlParams.get("id");
+  const users = JSON.parse(localStorage.getItem("users")) || [];
+  const attempts = JSON.parse(localStorage.getItem("attempts")) || {};
+  const tbody = document.querySelector(".tbody");
+  const userNameDiv = document.querySelector(".user-name");
+  const userEmailDiv = document.querySelector(".user-email");
 
-menuButton.addEventListener("click", () => {
-  sidebar.classList.toggle("hidden");
+  if (userId !== null && users[userId]) {
+    const user = users[userId];
+    const userAttempts = attempts[user.email] || [];
+
+    userNameDiv.innerHTML = `<span></span> <strong>${user.fullName.toUpperCase()}</strong>`;
+    userEmailDiv.innerHTML = `<span></span> <strong>${user.email}</strong>`;
+
+    if (userAttempts.length === 0) {
+      tbody.innerHTML = "<tr><td colspan='5'>No test attempts found</td></tr>";
+    } else {
+      userAttempts.sort((a, b) => new Date(b.timestamp) - new Date(a.timestamp));
+      const latestAttempt = userAttempts[0];
+      const correctAnswersCount = latestAttempt.responses
+        ? latestAttempt.responses.filter(r => r.selectedAnswer === r.correctAnswer).length
+        : (latestAttempt.correctAnswers || 0);
+
+      const row = document.createElement("tr");
+      row.innerHTML = `
+          <td>1</td>
+          <td>${new Date(latestAttempt.timestamp).toLocaleDateString()}</td>
+          <td>${correctAnswersCount}</td>
+          <td>${correctAnswersCount}</td>
+          <td><a href="../admin/result.html?id=${userId}&attempt=0" class="view">View</a></td>
+      `;
+      tbody.appendChild(row);
+    }
+  }
+
+  displayUsers(); // Only run when on users.html
 });
 
-function adminProfile() {
-  const profile = document.getElementById("admin-popup");
-  if (profile.style.display === "none" || profile.style.display === "") {
-    profile.style.display = "block";
-  } else {
-    profile.style.display = "none";
-  }
-}
-
-document.getElementById('logout').addEventListener('click', ()=>{
-  localStorage.removeItem('loggedInUser');
-  window.location.href = '../login.html'
-})
-
 async function displayUsers() {
-  let users = JSON.parse(localStorage.getItem("users")) || [];
+  const users = JSON.parse(localStorage.getItem("users")) || [];
   const attempts = JSON.parse(localStorage.getItem("attempts")) || {};
   const tableBody = document.querySelector(".main-content .tbody");
+  if (!tableBody) return;
+
   tableBody.innerHTML = "";
 
   if (users.length === 0) {
@@ -49,36 +86,26 @@ async function displayUsers() {
     return;
   }
 
-  users = users.map((user) => {
+  users.forEach((user, index) => {
     const userAttempts = attempts[user.email] || [];
     userAttempts.sort((a, b) => new Date(b.timestamp) - new Date(a.timestamp));
     const latest = userAttempts[0];
 
-    // Extract actual correct answers count from the latest attempt's score
-    const correctAnswers = latest ? latest.score * 1 : "N/A";
+    let scoreDisplay = "N/A";
+    if (latest && Array.isArray(latest.responses)) {
+      const correctAnswers = latest.responses.filter(r => r.selectedAnswer === r.correctAnswer).length;
+      scoreDisplay = `${correctAnswers}`;
+    }
 
-    return {
-      ...user,
-      noOfTestGiven: userAttempts.length,
-      score: latest ? correctAnswers : "N/A",
-      lastAttempt: latest
-        ? new Date(latest.timestamp).toLocaleDateString()
-        : "N/A",
-    };
-  });
-
-  users.forEach((user, index) => {
     const row = document.createElement("tr");
     row.innerHTML = `
-        <td>${index + 1}</td>
-        <td>${user.fullName}</td>
-        <td>${user.email}</td>
-        <td>${user.noOfTestGiven}</td>
-        <td>${user.score}</td>
-        <td>
-          <a href="../admin/user-details.html?id=${index}" class="view-page">View Result</a>
-        </td>
-      `;
+      <td>${index + 1}</td>
+      <td>${user.fullName}</td>
+      <td>${user.email}</td>
+      <td>${userAttempts.length}</td>
+      <td>${scoreDisplay}</td>
+      <td><a href="../admin/user-details.html?id=${index}" class="view-page">View Result</a></td>
+    `;
     tableBody.appendChild(row);
   });
 }

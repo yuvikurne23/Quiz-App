@@ -1,6 +1,5 @@
 const menuButton = document.querySelector(".menu");
 const sidebar = document.querySelector(".sidebar");
-const sidebarItems = document.querySelectorAll(".sidebar ul li");
 
 menuButton.addEventListener("click", () => {
   sidebar.classList.toggle("hidden");
@@ -8,11 +7,7 @@ menuButton.addEventListener("click", () => {
 
 function adminProfile() {
   const profile = document.getElementById("admin-popup");
-  if (profile.style.display === "none" || profile.style.display === "") {
-    profile.style.display = "block";
-  } else {
-    profile.style.display = "none";
-  }
+  profile.style.display = (profile.style.display === "block") ? "none" : "block";
 }
 
 document.getElementById("logout").addEventListener("click", () => {
@@ -20,21 +15,12 @@ document.getElementById("logout").addEventListener("click", () => {
   window.location.href = "../login.html";
 });
 
-// displayUsers();
 function handleNavigation(page) {
   switch (page) {
-    case "home":
-      window.location.href = "/admin/home.html";
-      break;
-    case "quiz":
-      window.location.href = "/admin/addQuiz.html";
-      break;
-    case "users":
-      window.location.href = "/admin/users.html";
-      break;
-    default:
-      window.location.href = "/admin/home.html";
-      break;
+    case "home": window.location.href = "/admin/home.html"; break;
+    case "quiz": window.location.href = "/admin/addQuiz.html"; break;
+    case "users": window.location.href = "/admin/users.html"; break;
+    default: window.location.href = "/admin/home.html"; break;
   }
 }
 
@@ -46,8 +32,6 @@ document.addEventListener("DOMContentLoaded", function () {
   const tbody = document.querySelector(".tbody");
   const userNameDiv = document.querySelector(".user-name");
   const userEmailDiv = document.querySelector(".user-email");
-
-  // const tbody = document.querySelector(".tbody");
 
   if (!userId || !users[userId]) {
     tbody.innerHTML = "<tr><td colspan='5'>User not found</td></tr>";
@@ -65,20 +49,30 @@ document.addEventListener("DOMContentLoaded", function () {
     return;
   }
 
+  // Sort attempts descending by timestamp (latest first)
   userAttempts.sort((a, b) => new Date(b.timestamp) - new Date(a.timestamp));
 
-  userAttempts.forEach((attempt, index) => {
-    // Check if the score is 1000, and if so, set the correctAnswers to 10
-    const correctAnswers = attempt.score === 1000 ? 10 : attempt.correctAnswers;
+  tbody.innerHTML = ""; // Clear previous rows
 
-    const row = document.createElement("tr");
-    row.innerHTML = `
-            <td>${index + 1}</td>
-            <td>${new Date(attempt.timestamp).toLocaleDateString()}</td>
-            <td>${attempt.score}</td>
-            <td>${attempt.score / 100}</td>
-            <td><a href="../admin/result.html?id=${userId}&attempt=${index}" class="view">View</a></td>
-        `;
-    tbody.appendChild(row);
-  });
+  // Only show latest attempt
+  const latestAttempt = userAttempts[0];
+
+  if (latestAttempt) {
+// Calculate correct answers by counting correct responses in the attempt
+const correctAnswersCount = latestAttempt.responses
+  ? latestAttempt.responses.filter(r => r.selectedAnswer === r.correctAnswer).length
+  : (latestAttempt.correctAnswers || 0);
+
+const row = document.createElement("tr");
+row.innerHTML = `
+    <td>1</td>
+    <td>${new Date(latestAttempt.timestamp).toLocaleDateString()}</td>
+    <td>${correctAnswersCount}</td>  <!-- Score = correct answers count -->
+    <td>${correctAnswersCount}</td>  <!-- Correct Answer column -->
+    <td><a href="../admin/result.html?id=${userId}&attempt=0" class="view">View</a></td>
+`;
+tbody.appendChild(row);
+  } else {
+    tbody.innerHTML = "<tr><td colspan='5'>No test attempts found</td></tr>";
+  }
 });
